@@ -41,7 +41,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 
 /* routers initated */
-app.get('/',()=>{
+app.get('/',(req,res,next)=>{
 	res.send("SERVER IS RUNNING")
 })
 app.use('/users', userRoutes)
