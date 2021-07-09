@@ -48,9 +48,11 @@ app.use(express.static(path.join(__dirname, 'public')))
 //view engine set up 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
- 
 
 /* routers initated */
+app.get('/',()=>{
+	res.send("SERVER IS RUNNING")
+})
 app.use('/users', userRoutes)
 
 io.on("connection", (socket) => {
