@@ -1,0 +1,12 @@
+GET http://localhost:8080/profile/getprofile/email@gmail.com HTTP/1.1
+
+################################
+
+PUT http://localhost:8080/profile/updateStatus/email@gmail.com/AVAILABLE  HTTP/1.1
+
+
+#####
+GET http://localhost:8080/profile/getprofile/aleeex2@gmail.com HTTP/1.1
+
+#####
+PUT http://localhost:8080/profile/updateStatus/aleeex2@gmail.com/AVAILABLE  HTTP/1.1
