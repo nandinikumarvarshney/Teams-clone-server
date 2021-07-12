@@ -1,3 +1,5 @@
+/*Imported usercontroller.js to provide function for CRUD operations, 
+validator.js for providing validations, bcryptjs to compare the passwords*/
 const userController = require('../controller/userController.js')
 const validator = require('../validator/validator.js')
 const bcrypt = require('bcryptjs')
@@ -8,6 +10,7 @@ let userService = {}
 
 //login
 userService.login = async (loginDetails) => {
+        // Define validator function for validating login details
     let { error, isValid } = validator.login(loginDetails);
     if (!isValid) {
         throw error
@@ -33,6 +36,7 @@ userService.login = async (loginDetails) => {
 
 //register
 userService.register = async (registerDetails) => {
+    // Define validator function for validating register details
     let { error, isValid } = validator.register(registerDetails);
     if (!isValid) {
         throw error

@@ -1,11 +1,16 @@
+//Imported Express, user.js file from service folder, jwt to generate jsonwebtoken
 const express = require('express');
 const userRoutes = express.Router();
 const userService = require('../service/user');
 const jwt = require("jsonwebtoken")
+
+//To initialize the constants for jwt while deploying on heroku
 const secret = "vnefovnepojvnoen@@E#I(RINN@!_)Q~#@INFN{)B$*~N!Q#RF{)~@falseF_@!JF(q#rf)}}ONFPION$PIFNI(!@((I@#P("
+
+//Imported .env File, used for Dev deployment
 require('dotenv').config()
 
-// TODO : login into the accounts   /* http://localhost:8080/users/register/Data */
+// Define login Route
 userRoutes.post('/login', async (req, res, next) => {
     try {
         let loginDetails = await req.body;
@@ -40,7 +45,7 @@ userRoutes.post('/login', async (req, res, next) => {
     }
 });
 
-//register
+//Define register Route
 userRoutes.post('/register', async (req, res, next) => {
     try {
         let registerDetails = await req.body;

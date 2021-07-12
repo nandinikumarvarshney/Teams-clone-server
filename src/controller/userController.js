@@ -1,13 +1,20 @@
+//Imported connection from connection.js, model from user.js 
 const connection = require('../config/connection.js')
 const User = require('../model/user.model.js')
+
+//Imported bcryptjs which is used for hashing the password
 const bcrypt = require('bcryptjs');
 
-createConnection = async () => {
+//Function defined for creating the connection to the database
+const createConnection = async () => {
     connection.getCollection();
 }
 
 let userController = {};
 
+/*Defined the Register function 
+@params registerDetails values of the form are coming from the front-end
+*/
 userController.register = async (registerDetails) => {
 
     //generate new password
@@ -43,8 +50,11 @@ userController.register = async (registerDetails) => {
 }
 
 
-
+/*Defined the login function 
+@params email value of the email is coming from user.js file of the service folder
+*/
 userController.login = async (email) => {
+    //finding the user based on email
     let user = await User.findOne({ email: email }, { _id: 0, email: 1, password: 1 });
     if (user) {
         return user;

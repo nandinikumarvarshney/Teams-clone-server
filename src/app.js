@@ -1,3 +1,5 @@
+/* Imported libraries to be used
+ */
 const express = require('express')
 const cookieParser = require('cookie-parser')
 const helmet = require('helmet')
@@ -5,19 +7,25 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const logger = require('morgan')
 
-const PORT = process.env.PORT || 8080
-
+//Imported .env File, used for Dev deployment
 require('dotenv').config()  
+
+//Port definition
+const PORT = process.env.PORT || 8080
 
 /* importing Routes that are used  */
 const userRoutes = require('./routes/user')
 
+//Initialize express class
 const app = express()
+
+//Created the server using http
 const server = require("http").createServer(app)
 
+//used for logging dev environment
 app.use(logger('dev'))
 
-
+//define socket.io for the server
 const io = require("socket.io")(server, {
 	cors: {
 		origin: "*",
@@ -25,9 +33,13 @@ const io = require("socket.io")(server, {
 	}
 });
 
+//used cors 
 app.use(cors())
+//used express.json
 app.use(express.json())
+//set express.urlencoded to false
 app.use(express.urlencoded({ extended: false }))
+//set cookies
 app.use(cookieParser())
 
 /* Config Helmet for security */
@@ -41,11 +53,12 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 
 /* routers initated */
-app.get('/',(req,res,next)=>{
+app.get('/',(req,res)=>{
 	res.send("SERVER IS RUNNING")
 })
 app.use('/users', userRoutes)
 
+//connected to the socket
 io.on("connection", (socket) => {
 	socket.emit("me", socket.id);
 	
@@ -62,4 +75,5 @@ io.on("connection", (socket) => {
 	});
 });
 
+//listening to the server
 server.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
