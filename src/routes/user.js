@@ -5,7 +5,7 @@ const userService = require('../service/user');
 const jwt = require("jsonwebtoken")
 
 //To initialize the constants for jwt while deploying on heroku
-const secret = "vnefovnepojvnoen@@E#I(RINN@!_)Q~#@INFN{)B$*~N!Q#RF{)~@falseF_@!JF(q#rf)}}ONFPION$PIFNI(!@((I@#P("
+const secret = "Enter the secret for jwt"
 
 //Imported .env File, used for Dev deployment
 require('dotenv').config()
