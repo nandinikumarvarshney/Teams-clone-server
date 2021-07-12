@@ -8,9 +8,9 @@ require('dotenv').config();
 let connection = {}
 
 //To initialize the constants needed for Database connection while deploying on heroku
-const MONGO_URL = "mongodb+srv://user:pass@clusterteamsclone.zvgx8.mongodb.net/clusterteamsclone?retryWrites=true&w=majority"
-const MONGO_USER = 'Nandini'
-const MONGO_PASS = encodeURIComponent(`Pixie001`)
+const MONGO_URL = "Enter your URL"
+const MONGO_USER = 'Enter your Username'
+const MONGO_PASS = encodeURIComponent(`Enter your Password`)
 
 /* Description of the Function given below
    This Function is used to connect with the MongoDB cluster
